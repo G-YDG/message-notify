@@ -1,0 +1,40 @@
+{
+    "name": "ydg/message-notify",
+    "description": "message notify sdk",
+    "license": "MIT",
+    "keywords": [
+        "php",
+        "sdk",
+        "message",
+        "message-notify",
+        "message-notify-sdk"
+    ],
+    "require": {
+        "php": "^7.0|^8.0",
+        "guzzlehttp/guzzle": "^7.4",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.12",
+        "phpunit/phpunit": "^9.5",
+        "vlucas/phpdotenv": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ydg\\MessageNotice\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "YdgTest\\MessageNotice\\": "tests/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "phpunit",
+        "cs-fix": "php-cs-fixer fix ."
+    }
+}
