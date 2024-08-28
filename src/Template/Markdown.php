@@ -29,7 +29,7 @@ class Markdown extends AbstractTemplate
                 'post' => [
                     'zh_cn' => [
                         'title' => $this->getTitle(),
-                        'content' => [$this->getFeiShuText()],
+                        'content' => $this->getFeiShuText(),
                     ],
                 ],
             ],
@@ -52,14 +52,16 @@ class Markdown extends AbstractTemplate
     {
         $text = is_array($this->getText()) ? $this->getText() : json_decode($this->getText(), true) ?? [
             [
-                'tag' => 'text',
-                'text' => $this->getText(),
+                [
+                    'tag' => 'text',
+                    'text' => $this->getText(),
+                ],
             ],
         ];
 
         $at = $this->getFeiShuAt();
 
-        return array_merge($text, $at);
+        return array_merge($text, [$at]);
     }
 
     protected function getFeiShuAt(): array
