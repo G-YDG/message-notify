@@ -76,6 +76,49 @@ class SendTest extends AbstractTest
         $this->assertEquals($result, true);
     }
 
+    public function testSendRichTextByFeiShu()
+    {
+        $test = json_encode([
+            [
+                [
+                    'tag' => 'text',
+                    'text' => '标题：',
+                ],
+                [
+                    'tag' => 'text',
+                    'text' => '这是标题',
+                ],
+            ],
+            [
+                [
+                    'tag' => 'text',
+                    'text' => '详情：',
+                ],
+                [
+                    'tag' => 'a',
+                    'text' => '点击查看',
+                    'href' => 'https://www.baidu.com'
+                ],
+            ],
+            [
+                [
+                    'tag' => 'at',
+                    'user_id' => 'all',
+                ],
+            ],
+        ]);
+        $result = MessageNotify::make()
+            ->setChannel(FeiShuChannel::class, $this->getConfig('FeiShu'))
+            ->setTitle('标题')
+            ->setText($test)
+            ->setTemplate(Markdown::class)
+            ->setAt(['all'])
+            ->send();
+
+
+        $this->assertEquals($result, true);
+    }
+
     public function testSendarkdownByWorkWechat()
     {
         $result = MessageNotify::make()
