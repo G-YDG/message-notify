@@ -64,7 +64,7 @@ class SendTest extends AbstractTest
         $this->assertEquals($result, true);
     }
 
-    public function testSendarkdownByFeiShu()
+    public function testSendMarkdownByFeiShu()
     {
         $result = MessageNotify::make()
             ->setChannel(FeiShuChannel::class, $this->getConfig('FeiShu'))
@@ -76,7 +76,7 @@ class SendTest extends AbstractTest
         $this->assertEquals($result, true);
     }
 
-    public function testSendarkdownByWorkWechat()
+    public function testSendMarkdownByWorkWechat()
     {
         $result = MessageNotify::make()
             ->setChannel(WorkWechatChannel::class, $this->getConfig('WorkWechat'))
@@ -91,7 +91,7 @@ class SendTest extends AbstractTest
     public function testAtAllByDingTalk()
     {
         $result = MessageNotify::make()
-            ->setChannel(WorkWechatChannel::class, $this->getConfig('WorkWechat'))
+            ->setChannel(DingTalkChannel::class, $this->getConfig('DingTalk'))
             ->setAt(['all'])
             ->setTitle('标题')
             ->setText('所有人员-通知测试')
@@ -104,7 +104,7 @@ class SendTest extends AbstractTest
     public function testAtAllByFeiShu()
     {
         $result = MessageNotify::make()
-            ->setChannel(WorkWechatChannel::class, $this->getConfig('WorkWechat'))
+            ->setChannel(FeiShuChannel::class, $this->getConfig('FeiShu'))
             ->setAt(['all'])
             ->setTitle('标题')
             ->setText('所有人员-通知测试')
